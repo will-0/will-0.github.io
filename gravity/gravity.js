@@ -1,6 +1,7 @@
 class boing{
     constructor(gameWidth,gameHeight) {
         this.width=50;
+        this.reverb=true
         this.height=50;
         this.maxSpeed=10;
         this.weeee=20
@@ -10,6 +11,8 @@ class boing{
         this.accel=1
         this.minus=false
         this.acceleration=0
+        this.bounce=2
+        this.rounder=2
         this.position = {
             x: gameWidth / 2 - this.width / 2,
             y: gameHeight-this.height
@@ -78,6 +81,18 @@ class boing{
             console.log('force = ' + this.weeee)
         }
     }
+    Bounce(){
+        this.bounce+=0.1
+        console.log('bounce = ' + (1/this.bounce))
+    }
+    debounce(){
+        this.bounce-=0.1
+        console.log('bounce = ' + (1/this.bounce))
+    }
+    bstop(){
+        this.reverb=false
+        console.log('bounce off')
+    }
     update(deltaTime) {
         if(!deltaTime) return;
         this.position.x += this.speed;
@@ -85,16 +100,22 @@ class boing{
         this.upspeed -= this.acceleration
         if(this.position.y>this.floor){
             this.position.y=this.floor
-            this.upspeed=-this.upspeed/2
-            if(this.upspeed<2){
-                this.upspeed=0
+            if(this.reverb){
+                this.upspeed=-this.upspeed/this.bounce
+                if(this.upspeed<this.rounder){
+                    this.upspeed=0
+                }
             }
         }
         if (this.position.y<0){
-            this.position.y = 0
-            this.upspeed=0
+            this.position.y=0
+            if(this.reverb){
+                this.upspeed=-this.upspeed/this.bounce
+            }
         }
-        if(this.position.x<0) this.position.x=0;
+        if(this.position.x<0){
+            this.position.x=0
+        }
         if(this.position.x + this.width > 800) this.position.x = 800 - this.width;
     }
 }
@@ -124,6 +145,15 @@ class Handler{
                     break;
                 case 68:
                     boing.defor()
+                    break;
+                case 109:
+                    boing.Bounce()
+                    break;
+                case 107:
+                    boing.debounce()
+                    break;
+                case 83:
+                    boing.bstop()
                     break;
             }
         });
