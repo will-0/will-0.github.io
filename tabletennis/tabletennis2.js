@@ -174,11 +174,13 @@ class ball{
             console.log('bottom player you dun bin exterminated')
             this.speed=0
             this.isDone = true
+            topwon(ctx)
         }
         if((10-this.x2) == 0) {
             console.log('top player you dun bin exterminated')
             this.speed=0
             this.isDone = true
+            bottomwon(ctx)
         }
         this.position.x += 5*this.speed.x;
         this.position.y += 5*this.speed.y;
@@ -188,6 +190,8 @@ class ball{
 var myReq
 
 let x = 0
+let image = document.getElementById("victory")
+let image1 = document.getElementById("dead")
 let x2 =0
 let score = 0
 let canvas = document.getElementById("gamescreen")
@@ -196,6 +200,16 @@ let ctx = canvas.getContext('2d')
 const GAME_WIDTH=800
 const GAME_HEIGHT=600
 
+function topwon(ctx){
+    ctx.clearRect(0,0,800,600);
+    ctx.drawImage(image1, 0, GAME_HEIGHT/2, GAME_WIDTH, GAME_HEIGHT/2)
+    ctx.drawImage(image, 0, 0, GAME_WIDTH, GAME_HEIGHT/2)
+}
+function bottomwon(ctx){
+    ctx.clearRect(0,0,800,600);
+    ctx.drawImage(image, 0, GAME_HEIGHT/2, GAME_WIDTH, GAME_HEIGHT/2)
+    ctx.drawImage(image1, 0, 0, GAME_WIDTH, GAME_HEIGHT/2)
+}
 
 Paddle = new Paddle(GAME_WIDTH,GAME_HEIGHT);
 Paddle2 = new Paddle2(GAME_WIDTH,GAME_HEIGHT);
