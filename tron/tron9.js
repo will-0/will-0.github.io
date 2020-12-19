@@ -30,8 +30,8 @@ class dodger{
             x:[],
             y:[]
         }
-        this.size=9
-        this.maxSpeed=6
+        this.size=10
+        this.maxSpeed=9
         this.roller=0
         this.mid=this.size/2
     }
@@ -191,7 +191,7 @@ class dodger{
                     if(dodger1.history.x[this.roller]+this.size > this.position.x+this.size){
                         if(this.position.x+this.size>dodger1.history.x[this.roller]){
                             console.log('hit')
-                            if(this.color=='#0ff'){
+                            if(this.color=='#f0f'){
                                 deadp=true
                             }
                             else{
@@ -207,7 +207,7 @@ class dodger{
                     if(dodger1.history.x[this.roller]+this.size > this.position.x+this.size){
                         if(this.position.x+this.size>dodger1.history.x[this.roller]){
                             console.log('hit')
-                            if(this.color=='#0ff'){
+                            if(this.color=='#f0f'){
                                 deadp=true
                             }
                             else{
@@ -223,7 +223,7 @@ class dodger{
                     if(dodger1.history.x[this.roller]+this.size > this.position.x){
                         if(this.position.x>dodger1.history.x[this.roller]){
                             console.log('hit')
-                            if(this.color=='#0ff'){
+                            if(this.color=='#f0f'){
                                 deadp=true
                             }
                             else{
@@ -239,7 +239,7 @@ class dodger{
                     if(dodger1.history.x[this.roller]+this.size > this.position.x){
                         if(this.position.x>dodger1.history.x[this.roller]){
                             console.log('hit')
-                            if(this.color=='#0ff'){
+                            if(this.color=='#f0f'){
                                 deadp=true
                             }
                             else{
@@ -255,7 +255,7 @@ class dodger{
                     if(dodger1.history.x[this.roller]+this.mid > this.position.x+this.mid){
                         if(this.position.x+this.mid>dodger1.history.x[this.roller]){
                             console.log('hit')
-                            if(this.color=='#0ff'){
+                            if(this.color=='#f0f'){
                                 deadp=true
                             }
                             else{
@@ -442,7 +442,7 @@ function gameloop(timestamp) {
         requestAnimationFrame(gameloop)
     }
     else{
-        if(!deadp){
+        if(deadb){
             ctx.clearRect(0,0,800,600)
             ctx.fillStyle = '#f0f'
             ctx.fillRect(0,0,800,600)
