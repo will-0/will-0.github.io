@@ -877,7 +877,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==1){
@@ -1121,7 +1121,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==2){
@@ -1365,7 +1365,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==3){
@@ -1609,7 +1609,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==4){
@@ -1696,7 +1696,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==5){
@@ -1783,7 +1783,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==6){
@@ -2264,7 +2264,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
         if(turn%8==7){
@@ -2745,7 +2745,7 @@ function handler2(){
                 }
             }
             else{
-                turn++
+                turn+=2
             }
         }
     }
