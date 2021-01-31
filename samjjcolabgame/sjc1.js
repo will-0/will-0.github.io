@@ -118,7 +118,7 @@ function diffr(){
     hr=hr*bpvc
     return hr
 }
-const bpvc=1
+const bpvc=2
 let x = 0
 while(x<bpvc){
     random_map(x)
