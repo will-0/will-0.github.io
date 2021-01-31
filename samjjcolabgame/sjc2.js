@@ -12,6 +12,12 @@ const precourse=[
     [],
     []
 ]
+window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+    }
+}, false);
 let laseroos = []
 let laseras = []
 let blpr=[410,485,10,40,55]
@@ -61,13 +67,12 @@ function random_map(inar){
                 case 2:
                     precourse[inar].push(2+i*100)
                     break;
-                case 3:
-                    precourse[inar].push(3+i*100)
-                    break;
-                case 4:
-                    precourse[inar].push(4+i*100)
-                    break;
-                case 5:
+                    window.addEventListener("keydown", function(e) {
+                        // space and arrow keys
+                        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+                            e.preventDefault();
+                        }
+                    }, false);       case 5:
                     precourse[inar].push(5+i*100)
                     break;
                 case 6:
