@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>halfpenny gaming :) / jumpyblock</title>
+        <h1>JUMPYBLOCK</h1>
+    </head>
+    <body>
+        <script>
+            // after dom is loaded
+            $(function() {
+              // scroll all the way down
+              $('html, body').scrollTop($(document).height() - ($(window).height()+300));
+            });
+            </script>
+        <style>
+            #gamescreen{
+                border: 20px solid rgb(0, 0, 0)
+            }
+            img{
+                display:none
+            }
+        </style>
+        <canvas id="gamescreen" width="800" height="600"></canvas>
+        <script src="jumpy2.js"></script>
+    </body>
+</html>
