@@ -88,12 +88,12 @@ function random_map(){
             rn--
         }
         f=0
-        while(f<rn-1){
+        while(f<rn+1){
             precourse[f].push(rn-f)
             f++
         }
         f=0
-        while(f<rn-1){
+        while(f<rn+1){
             precourse[f].push(rn-f)
             f++
         }
