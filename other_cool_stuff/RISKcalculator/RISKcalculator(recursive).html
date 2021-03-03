@@ -21,11 +21,25 @@
         }
     }
     function calculate(){
-        c1 = document.getElementById('c1').value
-        c2 = document.getElementById('c2').value
+        c1 = parseInt(document.getElementById('c1').value)
+        c2 = parseInt(document.getElementById('c2').value)
         wprob=5/12
         lprob=7/12
-        document.getElementById('output').textContent =
-            'The probability of you winning this battle is:' + gwprb(c2,c1);
+        if(c1<2){
+            alert('you must have more than 2 troops to attack')
+        }
+        else if(c2<1){
+            alert('you must have at least 1 troop in each country')
+        }
+        else if(c1 + c2>32){
+            q=prompt('you have inputed very large numbers this may crash your computer do you want to continue(y/n)',"n")
+            if(q=="n"){
+                k=true
+            }
+        }
+        else{
+            document.getElementById('output').textContent =
+                'The probability of you winning this battle is:' + gwprb(c2,c1);
+        }
     }</script>
 </html>

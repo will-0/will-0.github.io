@@ -5,8 +5,8 @@ function output(arr){
             arr[i+1];
     }
 }
-let dice=parseInt(document.getElementById("dice").value)
-let sides=parseInt(document.getElementById("sides").value)
+var dice=parseInt(document.getElementById("dice").value)
+var sides=parseInt(document.getElementById("sides").value)
 function rounding(num,ud){
     if(num%1==0){
         return num
