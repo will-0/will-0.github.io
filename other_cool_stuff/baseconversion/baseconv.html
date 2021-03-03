@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>Halfpenny Gaming :) / Diceroll</title>
+</head>
+
+<body>
+    <h1>BASE CONVERTER</h1>
+    <br>
+    <p>decimal(base 10) input:</p>
+    <input type="number" id="dec"></input>
+    <br>
+    <p>base you want to conert to</p>
+    <input type="number" id="base"></input>
+    <button id="run" onclick="run()">run</button>
+    <br>
+    <div id="output"> </div>
+    <br>
+    <br>
+    <br>
+    <p>
+        I havent reverted to letters because<br>
+        there arent enough for say a base 100<br>
+        number because there arent 100 letters<br>
+        :)
+
+    </p>
+    <script>
+        let alpha="abcdefghijklmnopqrstuvwxyz"
+        let numchild=1
+        function rounding(num,ud){
+            if(num%1==0){
+                return num
+            }
+            else{
+                rem=num%1
+                num-=rem
+                num+=ud
+                return num
+            }
+        }
+        function run(){
+            if(parseInt(document.getElementById('base').value)<2){
+                alert('base is too small')
+            }
+            else{
+                document.getElementById('output').textContent =
+                    basebasher(parseInt(document.getElementById('dec').value),parseInt(document.getElementById('base').value),0) + ' is ' + parseInt(document.getElementById('dec').value) + ' in base ' + parseInt(document.getElementById('base').value);
+            }
+        }
+        function basebasher(dec,base,dignum){
+            var digits=[]
+            x=true
+            while(x){
+                digits.push(dec%base)
+                dec=rounding(dec/base,0)
+                if(dec==0){
+                    x=false
+                }
+            }
+            if(digits.length<dignum){
+                while(dignum>digits.length){
+                    digits.push(0)
+                }
+            }
+            return digits.reverse()
+        }
+    </script>
+    <style>
+        input[type=number]{
+            width:300px
+        }
+        #gamescreen{
+    
+            border: 20px solid black
+        }
+        img {
+            display: none;
+        }
+    </style>
+
+</body>
+</html>
