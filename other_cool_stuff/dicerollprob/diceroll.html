@@ -1,0 +1,105 @@
+<html>
+<head>
+    <title>Halfpenny Gaming :) / Diceroll</title>
+</head>
+
+<body>
+    <h1>DICEROLL CALCULATOR</h1>
+    <br>
+    <div id="output"> </div>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+    <table id="table">
+        <tr>
+            <th>NUMBER</th>
+            <th>PROBABILITY THAT IT WILL OCCUR</th>
+        </tr>
+    </table>
+    <br>
+    <p>how many dice</p>
+    <input type="number" id="dice"></input>
+    <br>
+    <p>how many sides</p>
+    <input type="number" id="sides"></input>
+    <button id="run" onclick="run()">run</button>
+    <br>
+    <script>
+        let alpha="abcdefghijklmnopqrstuvwxyz"
+        let numchild=1
+        function run(){
+            var x = document.getElementById("table").rows.length;
+            for(i=0;i<x;i++){
+                if(i!==0){
+                    document.getElementById("table").deleteRow(1)
+                }
+            }
+            numchild=1
+            var rep=document.getElementById("dice").value*document.getElementById("sides").value
+            for(i=0;i<rep;i++){
+                appendRow()
+            }
+            gamescreen()
+        }
+        function appendRow() {
+            var tbl = document.getElementById('table'), // table reference
+                row = tbl.insertRow(tbl.rows.length),      // append table row
+                i;
+            for (i = 0; i < tbl.rows[0].cells.length; i++) {
+                if(i==0){
+                    createCell(row.insertCell(i), numchild, 'row',true);
+                }
+                else{
+                    createCell(row.insertCell(i), numchild, 'row',false);
+                }
+            }
+            numchild++
+        }
+        function createCell(cell, text, style,index) {
+            var div = document.createElement('div')
+            var txt = document.createTextNode(text)
+            if(index){
+                div.appendChild(txt)
+            }
+            else{
+                div.setAttribute("id",numchild.toString())
+            }
+            div.setAttribute('class', style)
+            div.setAttribute('className', style)
+            cell.appendChild(div)
+        }
+        function gamescreen(){
+            var y = document.createElement("script")
+            y.setAttribute("src","diceroll.js")
+            document.body.appendChild(y)
+        }
+    </script>
+    <style>
+        input[type=number]{
+            width:70px
+        }
+        #gamescreen{
+    
+            border: 20px solid black
+        }
+        img {
+            display: none;
+        }
+    </style>
+
+</body>
+</html>
