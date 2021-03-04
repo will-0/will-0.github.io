@@ -1,0 +1,30 @@
+<html>
+    <h1>funky text encoder &#128077;</h1>
+    <p>message you want to encode</p>
+    <input type="text" id='text'>
+    <button type="button" onclick="encode()">encode</button>
+    <div id="output"></div>
+    <script>
+        alphabet='abcdefghijklmnopqrstuvwxyz '
+        replace=["&#916;","&#223;","&#674;","&#272;","&#931;","	&#9429;","&#119970;","&#8460;","|","&#564;","&#120130;","&#7740;","&#5846;","&#8914;","&#8584;","&#5528;","&#4680;","&#8510;","&#65284;","&#359;","&mu;","&#611;","&#1513;","&#5860;","&#978;","&#576;","&nbsp; &nbsp; &nbsp;"]
+        
+        function encode(){
+            txt=document.getElementById("text").value
+            output=''
+            for(j=0;j<txt.length;j++){
+                temp=output
+                for(i=0;i<alphabet.length;i++){
+                    if(txt[j]==alphabet[i]){
+                        output=output+replace[i]
+                    }
+                }
+                if(temp==output){
+                    output=output+txt[i]
+                }
+            } 
+            console.log(output)
+            document.getElementById('output').innerHTML =
+                output;
+        }
+    </script>
+</html>
