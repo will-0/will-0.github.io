@@ -18,15 +18,19 @@
     <br>
     <br>
     <p>
-        I havent reverted to letters because<br>
-        there arent enough for say a base 100<br>
-        number because there arent 100 letters<br>
-        :)
-
+        all bases up to 36 contain letters<br>
+        we run out of letters after that<br>
+        if you want to turn lettering off<br>
+        flick switch below
     </p>
+    <label class="switch">
+        <input type="checkbox" id="togBtn">
+        <div class="slider round"></div>
+    </label>
     <script>
-        let alpha="abcdefghijklmnopqrstuvwxyz"
+        let alpha="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
         let numchild=1
+        let check = true
         function rounding(num,ud){
             if(num%1==0){
                 return num
@@ -44,7 +48,7 @@
             }
             else{
                 document.getElementById('output').textContent =
-                    basebasher(parseInt(document.getElementById('dec').value),parseInt(document.getElementById('base').value),0) + ' is ' + parseInt(document.getElementById('dec').value) + ' in base ' + parseInt(document.getElementById('base').value);
+                    letters(basebasher(parseInt(document.getElementById('dec').value),parseInt(document.getElementById('base').value),0),parseInt(document.getElementById('base').value)) + ' is ' + parseInt(document.getElementById('dec').value) + ' in base ' + parseInt(document.getElementById('base').value)
             }
         }
         function basebasher(dec,base,dignum){
@@ -64,6 +68,24 @@
             }
             return digits.reverse()
         }
+        function letters(arr,base){
+            if(base<=36 && document.getElementById('togBtn').checked){
+                narr=[]
+                for(i=0;i<arr.length;i++){
+                    if(arr[i]>9){
+                        narr.push(alpha[arr[i]-10])
+                    }
+                    else{
+                        narr.push(arr[i])
+                    }
+                }
+                return narr
+            }
+            else{
+                return arr
+            }
+            
+        }
     </script>
     <style>
         input[type=number]{
@@ -75,6 +97,67 @@
         }
         img {
             display: none;
+        }
+        .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        }
+
+        /* The slider */
+        .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+        }
+
+        input:checked + .slider {
+        background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+        box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+        border-radius: 34px;
+        }
+
+        .slider.round:before {
+        border-radius: 50%;
         }
     </style>
 
