@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>halfpenny gaming :) / Border=Lava</title>
+        <h1>THE ESCAPE</h1>
+    </head>
+    <body>
+        <p>
+            when you click run the webpage<br>
+            will ask you to input the number<br>
+            of blocks per vertical collumn<br>
+            then it will ask you for a/some<br>
+            code/s that will construct the<br>
+            level. If you do not understand<br>
+            how or what code to enter to<br>
+            create your level click on the<br>
+            link below and it will explain
+        </p>
+        <a href='HELP.html'>Help</a>
+        <br>
+        <br>
+        <button id="run" onclick="gamescreen()">run</button>
+        <script>
+            function gamescreen(){
+            var x = document.createElement("canvas")
+            var y = document.createElement("script")
+            var z = document.getElementById("run")
+            x.setAttribute("id","gamescreen")
+            x.setAttribute("width","800")
+            x.setAttribute("height","500")
+            y.setAttribute("src","sjc.js")
+            z.disabled = true
+            document.body.appendChild(x)
+            document.body.appendChild(y)
+        }
+        </script>
+        <style>
+            #gamescreen{
+                border: 20px solid rgb(0, 0, 0)
+            }
+            img{
+                display:none
+            }
+        </style>
+    </body>
+</html>
