@@ -31,10 +31,10 @@ function BOOM(pos,brad){
     let dist10=Math.sqrt(Math.pow(pos.x-tank1.position.x,2)+Math.pow(pos.y-tank1.position.y,2))
     let dist20=Math.sqrt(Math.pow(pos.x-tank2.position.x,2)+Math.pow(pos.y-tank2.position.y,2))
     if((brad-2*brad)<dist10&&dist10<brad){
-        tank1.health-=(brad-dist10)*3
+        tank1.health-=(brad-dist10)*2
     }
     if((brad-2*brad)<dist20&&dist20<brad){
-        tank2.health-=(brad-dist20)
+        tank2.health-=(brad-dist20)*2
     }
 }
 function angularmov(ang,speed){
