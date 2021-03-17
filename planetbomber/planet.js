@@ -4,6 +4,7 @@ terr=[]
 let bullets=[]
 let obs=[]
 kill=false
+let scr=0
 let fst=true
 const pixels=4
 function WORLDBOOM(){
@@ -196,6 +197,8 @@ class bomber{
         this.points=[this.position]
     }
     fire(){
+        scr++
+        document.getElementById('output').textContent = 'your score is ' + scr
         let new_bullet = new Bullet(b1,GAME_WIDTH,GAME_HEIGHT,this.year)
         bullets.push(new_bullet)
     }
