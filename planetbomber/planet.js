@@ -259,6 +259,17 @@ class Bullet{
                 }
             }
         })
+        if(this.position.y < epicenter.y){
+            if(epicenter.y < this.position.y + this.size){
+                if(this.position.x < epicenter.x){
+                    if(epicenter.x < this.position.x + this.size){
+                        BOOM(this.position,22)
+                        this.dead=true
+                        console.log('hi')
+                    }
+                }
+            }
+        }
     }
 }
 function random_map(){
