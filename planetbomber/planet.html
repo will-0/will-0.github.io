@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>halfpenny gaming :) / PLANETBOMBER</title>
+        <h1>PLANETBOMBER</h1>
+    </head>
+    <body>
+        <p>
+            destroy the planet in<br>
+            as little shots as possible<br>
+            but avoid the red streeks<br>
+            as they will cause much<br>
+            pain...
+        </p>
+        <div id='output'>your score is 0</div>
+        <img id="boom" src="explosion.jpg">
+        <img id="dead" src="dead.jpg">
+        <style>
+            #gamescreen{
+                border: 20px solid red
+            }
+            img{
+                display:none
+            }
+        </style>
+        <canvas id="gamescreen" width="800" height="600"></canvas>
+        <script src="planet.js"></script>
+    </body>
+</html>
