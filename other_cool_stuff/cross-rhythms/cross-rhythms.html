@@ -1,0 +1,90 @@
+<html>
+    <h1>CROSS-RHYTHMS</h1>
+    <br>
+    <p>rhythm 1:</p>
+    <input type="number" id='r1' value='4'>
+    <br>
+    <p>rhythm 2:</p>
+    <input type="number" id='r2' value='3'>
+    <br>
+    <p>rhythm 1 speed(bpm):</p>
+    <input type="number" id='bpm' value="60">
+    <br>
+    <p>repititions:</p>
+    <input type="number" id='reps' value="1">
+    <br>
+    <br>
+    <button type="button" id="play" onclick="precheck()">play</button>
+    <br>
+    <p>rhythm visualizer:</p>
+    <style>
+        #sample{
+            border:5px solid black
+        }
+    </style>
+    <audio id="player" src="tick.wav"></audio>
+    <audio id="player2" src="tick2.wav"></audio>
+    <canvas id='sample' width='800' height='20'></canvas>
+    <script>
+        let canvas = document.getElementById("sample")
+        let ctx = canvas.getContext('2d')
+        let button = document.getElementById('play')
+        function precheck(){
+            var r1 = parseInt(document.getElementById('r1').value)
+            var r2 = parseInt(document.getElementById('r2').value)
+            if(r1<r2){
+                alert('rythm 1 must be larger than rythm 2')
+            }
+            else{
+                play()
+            }
+        }
+        function tick(timeout,rep,src){
+            var done=false
+            if(rep==0){
+                setTimeout(function(){
+                    button.disabled=false
+                },1000)
+                return
+            }
+            setTimeout(function(){
+                document.getElementById(src).play()
+                tick(timeout,rep-1,src)
+            },timeout)
+
+        }
+        function play(){
+            var bpm = document.getElementById('bpm').value
+            var r1 = document.getElementById('r1').value
+            var r2 = document.getElementById('r2').value
+            var reps = document.getElementById('reps').value
+            reps1=r1*reps
+            reps2=r2*reps
+            ticktime1=60000/bpm
+            ticktime2=(r1/r2)*ticktime1
+            button.disabled=true
+            document.getElementById('player').play()
+            document.getElementById('player2').play()
+            visual(r1,r2,ticktime1)
+            setTimeout(function(){
+                document.getElementById('player').play()
+                tick(ticktime1,reps1-1,'player')
+            },ticktime1)
+            setTimeout(function(){
+                document.getElementById('player2').play()
+                tick(ticktime2,reps2-1,'player2')
+            },ticktime2)
+        }
+        function visual(r1,r2){
+            ctx.fillStyle='#f00'
+            ctx.fillRect(0,0,2,20)
+            ctx.clearRect(0,0,800,20)
+            for(i=0;i<r1;i++){
+                ctx.fillRect((800*(i/r1)),10,2,10)
+            }
+            for(i=0;i<r1;i++){
+                ctx.fillRect((800*(i/r2)),0,2,10)
+            }
+        }
+    </script>
+</html>
