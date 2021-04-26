@@ -1,7 +1,7 @@
 const GAME_SIZE=600
 const divs=parseInt(document.getElementById('grid').value)
 const divsize=GAME_SIZE/divs
-const minenum=Math.floor((divs*divs)*0.17)
+const minenum=Math.floor((divs*divs)*0.14)
 const pixels=1
 let minepos=[]
 let proxblockpos=[]
@@ -35,7 +35,7 @@ function mdvar_setter(v){
     for(i=0;i<divs;i++){
         v.push([])
         for(j=0;j<divs;j++){
-            v[i].push(false)
+            v[i].push(true)
         }
     }
 }
