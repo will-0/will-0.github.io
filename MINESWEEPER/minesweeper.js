@@ -35,7 +35,7 @@ function mdvar_setter(v){
     for(i=0;i<divs;i++){
         v.push([])
         for(j=0;j<divs;j++){
-            v[i].push(true)
+            v[i].push(false)
         }
     }
 }
