@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>halfpenny gaming :) / MINESWEEPER</title>
+        <h1>MINESWEEPER</h1>
+    </head>
+    <body>
+        <p>
+            click run to start<br>
+            use the arrow keys to move<br>
+            and space to dig. dig around<br>
+            all the mines to win<br>
+            <br>
+            p.s if the screen goes boom<br>
+            your dead
+        </p>
+        <br>
+        <p>grid size:</p>
+        <input type='num' id='grid' value='30'>
+        <br>
+        <p id='score'>score:0%</p>
+
+        <button type="button" onclick='gamescreen()' id='run'>run</button>
+        <img id="boom" src="explosion.jpg">
+        <img id="minesweeper" src="goofyface.png">
+        <img id="1" src="number_pics/1.jpg">
+        <img id="2" src="number_pics/2.jpg">
+        <img id="3" src="number_pics/3.jpg">
+        <img id="4" src="number_pics/4.jpg">
+        <img id="5" src="number_pics/5.jpg">
+        <img id="6" src="number_pics/6.jpg">
+        <img id="7" src="number_pics/7.jpg">
+        <img id="8" src="number_pics/8.jpg">
+        <script>
+            function gamescreen(){
+                var x = document.createElement("canvas")
+                var y = document.createElement("script")
+                var z = document.getElementById("run")
+                x.setAttribute("id","gamescreen")
+                x.setAttribute("width","600")
+                x.setAttribute("height","600")
+                y.setAttribute("src","minesweeper.js")
+                z.disabled = true
+                document.body.appendChild(x)
+                document.body.appendChild(y)
+            }
+        </script>
+        <style>
+            #gamescreen{
+                border: 20px solid red
+            }
+            img{
+                display:none
+            }
+        </style>
+    </body>
+</html>
