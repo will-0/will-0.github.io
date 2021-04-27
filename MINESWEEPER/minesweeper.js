@@ -39,22 +39,6 @@ function mdvar_setter(v){
         }
     }
 }
-function angularmov(ang,speed){
-    rang=ang*(Math.PI/180)
-    xymot={
-        x:0,
-        y:0
-    }
-    xymot.y=speed*Math.sin(rang)
-    xymot.x=speed*Math.cos(rang)
-    return xymot
-}
-function drawline(origin,ang,length){
-    for(i=0;i<length;i++){
-        pos=angularmov(ang,i)
-        ctx.fillRect(origin.x+pos.x,origin.y+pos.y,pixels,pixels)
-    }
-}
 function linear_search(item,arr){
     for(scr=0;scr<arr.length;scr++){
         if(xycode(arr[scr].x,arr[scr].y)==xycode(item.x,item.y)){
@@ -179,10 +163,10 @@ function excavator(pos,reps){
 function grid(){
     ctx.fillStyle='#000'
     for(j=0;j<divs;j++){
-        drawline({x:0,y:divsize*j},0,GAME_SIZE)
+        ctx.fillRect(0,j*divsize,GAME_SIZE,1)
     }
     for(j=0;j<divs;j++){
-        drawline({x:divsize*j,y:0},90,GAME_SIZE)
+        ctx.fillRect(j*divsize,0,1,GAME_SIZE)
     }
 }
 function score(){
