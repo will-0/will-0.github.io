@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>halfpenny gaming :) / CLAUSTROPHOBIA</title>
+        <h1>CLAUSTROPHOBIA</h1>
+    </head>
+    <body>
+        <p>
+            heard the evil hyperactive<br>
+            pink sheep into the red box<br>
+        </p>
+        <br>
+        <p>difficulty(4=almost impossible,40=ultimate noob mode):</p>
+        <input type='num' id='targ' value='20'>
+        <br>
+        <button type="button" onclick='gamescreen()' id='run'>run</button>
+        <br>
+        <script>
+            function gamescreen(){
+                var x = document.createElement("canvas")
+                var y = document.createElement("script")
+                var z = document.getElementById("run")
+                x.setAttribute("id","gamescreen")
+                x.setAttribute("width","600")
+                x.setAttribute("height","600")
+                y.setAttribute("src","claustrophobia.js")
+                z.disabled = true
+                document.body.appendChild(x)
+                document.body.appendChild(y)
+            }
+        </script>
+        <img id="boom" src="goofyface.png">
+        <img id="sheep" src="sheep.png">
+        <style>
+            #gamescreen{
+                border: 20px solid red
+            }
+            img{
+                display:none
+            }
+        </style>
+    </body>
+</html>
