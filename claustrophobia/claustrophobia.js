@@ -86,6 +86,9 @@ class ghost{
             x:this.coordinates.x*divsize,
             y:this.coordinates.y*divsize
         }
+        this.previousmove=0
+        this.con=0
+        this.maxcon=4
     }
     draw(ctx){
         ctx.fillStyle='#f0f'
@@ -126,7 +129,7 @@ class ghost{
         }
         var xr
         var yr
-        if(loop%2==0){
+        if(loop%5==0){
             for(xr=0;xr<3;xr++){
                 for(yr=0;yr<3;yr++){
                     if(this.coordinates.x+(xr-1)>=0 && this.coordinates.y+(yr-1)>=0 && this.coordinates.x+(xr-1)<divs && this.coordinates.y+(yr-1)<divs){
@@ -167,24 +170,65 @@ class ghost{
             if(dir.down){
                 dir.poss.push(4)
             }
-            for(i=0;i<dir.nums;i++){
-                if(random==i){
-                    switch(dir.poss[i]){
-                        case 1:
-                            this.moveleft()
-                            break
-                        case 2:
-                            this.moveright()
-                            break
-                        case 3:
-                            this.moveup()
-                            break
-                        case 4:
-                            this.movedown()
-                            break
+            let skip=false
+            switch(this.previousmove){
+                case 1:
+                    if(dir.left){
+                        this.moveleft()
+                        skip=true
+                    }
+                    break
+                case 2:
+                    if(dir.right){
+                        this.moveright()
+                        skip=true
+                    }
+                    break
+                case 3:
+                    if(dir.up){
+                        this.moveup()
+                        skip=true
+                    }
+                    break
+                case 4:
+                    if(dir.right){
+                        this.movedown()
+                        skip=true
+                    }
+                    break
+            }
+            
+            if(!skip){
+                for(i=0;i<dir.nums;i++){
+                    if(random==i){
+                        switch(dir.poss[i]){
+                            case 1:
+                                this.moveleft()
+                                this.previousmove=1
+                                break
+                            case 2:
+                                this.moveright()
+                                this.previousmove=2
+                                break
+                            case 3:
+                                this.moveup()
+                                this.previousmove=3
+                                break
+                            case 4:
+                                this.movedown()
+                                this.previousmove=4
+                                break
+                        }
                     }
                 }
             }
+            else{
+                this.con++
+                if(this.con>=this.maxcon){
+                    this.previousmove=0
+                }
+            }
+            
         }
         this.position={
             x:this.coordinates.x*divsize,
@@ -307,7 +351,9 @@ function gameloop(timestamp) {
     sheepdog1.draw(ctx)
     sheepdog1.update()
     if(!kill && !end){
-        requestAnimationFrame(gameloop)
+        setTimeout(function(){
+            requestAnimationFrame(gameloop)
+        },0)
     }
     else if(end){
         WORLDBOOM('boom')
