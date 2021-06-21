@@ -137,7 +137,7 @@ class ghost{
         }
         var xr
         var yr
-        if(loop%10==0){
+        if(loop%5==0){
             for(xr=0;xr<3;xr++){
                 for(yr=0;yr<3;yr++){
                     if(this.coordinates.x+(xr-1)>=0 && this.coordinates.y+(yr-1)>=0 && this.coordinates.x+(xr-1)<divs && this.coordinates.y+(yr-1)<divs){
