@@ -76,6 +76,14 @@ function grid(){
         ctx.fillRect(j*divsize,0,1,GAME_SIZE)
     }
 }
+function linearSearch(arr,key){
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] === key){
+            return true
+        }
+    }
+    return false
+}
 class ghost{
     constructor(pos){
         this.coordinates={
@@ -129,7 +137,7 @@ class ghost{
         }
         var xr
         var yr
-        if(loop%5==0){
+        if(loop%10==0){
             for(xr=0;xr<3;xr++){
                 for(yr=0;yr<3;yr++){
                     if(this.coordinates.x+(xr-1)>=0 && this.coordinates.y+(yr-1)>=0 && this.coordinates.x+(xr-1)<divs && this.coordinates.y+(yr-1)<divs){
@@ -158,6 +166,7 @@ class ghost{
                 }
             }
             let random = Math.floor(Math.random()*dir.nums)
+            // console.log(dir.nums)
             if(dir.left){
                 dir.poss.push(1)
             }
@@ -171,33 +180,30 @@ class ghost{
                 dir.poss.push(4)
             }
             let skip=false
-            switch(this.previousmove){
-                case 1:
-                    if(dir.left){
+            if(linearSearch(dir.poss,this.previousmove)){
+                switch(this.previousmove){
+                    case 1:
                         this.moveleft()
+                        this.previousmove=0
                         skip=true
-                    }
-                    break
-                case 2:
-                    if(dir.right){
+                        break
+                    case 2:
                         this.moveright()
+                        this.previousmove=0
                         skip=true
-                    }
-                    break
-                case 3:
-                    if(dir.up){
+                        break
+                    case 3:
                         this.moveup()
+                        this.previousmove=0
                         skip=true
-                    }
-                    break
-                case 4:
-                    if(dir.right){
+                        break
+                    case 4:
                         this.movedown()
+                        this.previousmove=0
                         skip=true
-                    }
-                    break
+                        break
+                }
             }
-            
             if(!skip){
                 for(i=0;i<dir.nums;i++){
                     if(random==i){
@@ -228,8 +234,12 @@ class ghost{
                     this.previousmove=0
                 }
             }
+            if(uncovered[this.coordinates.x][this.coordinates.y]==false){
+                console.log(dir)
+            }
             
         }
+        
         this.position={
             x:this.coordinates.x*divsize,
             y:this.coordinates.y*divsize
@@ -321,13 +331,17 @@ class Handler{
                     minesweeper.movedown()
                     minesweeper.trump()
                     break
+                case 32:
+
+                    end=true
+                    break
             }
         });
     }
 }
 ghosts=[]
 mdvar_setter(uncovered)
-for(i=0;i<divs/2;i++){
+for(i=0;i<divs;i++){
     ghosts.push(new ghost({x:Math.floor(Math.random()*divs-2)+1,y:Math.floor(Math.random()*divs-2)+1}))
 }
 sheepdog1=new sheepdog({x:0,y:0})
@@ -350,7 +364,7 @@ function gameloop(timestamp) {
     grid()
     sheepdog1.draw(ctx)
     sheepdog1.update()
-    if(!kill && !end){
+    if(!end && !dead){
         setTimeout(function(){
             requestAnimationFrame(gameloop)
         },0)
