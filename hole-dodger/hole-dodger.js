@@ -82,10 +82,13 @@ class dodger{
                 this.isopoints.top[i]=iso_map(this.points[i],this.offsetorigin+this.offset)
             }
             for(j=0;j<holes.holes.length;j++){
-                for(i=0;i<this.points.length;i++){
-                    if(detect_rotated_shape(holes.holepoints[j],this.points[i])){
-                        dead=true
-                    }
+                if(
+                    detect_rotated_shape(holes.holepoints[j],this.points[0]) &&
+                    detect_rotated_shape(holes.holepoints[j],this.points[1]) &&
+                    detect_rotated_shape(holes.holepoints[j],this.points[2]) &&
+                    detect_rotated_shape(holes.holepoints[j],this.points[3])
+                    ){
+                    dead=true
                 }
             }
             this.speed = angularmov(this.rotation,this.maxSpeed)
@@ -208,7 +211,7 @@ class Holes{
         this.holebirthdate=[]
         this.holepoints=[]
         this.holeisopoints=[]
-        this.size=70
+        this.size=80
     }
     addhole(pos){
         this.holes.push(pos)
