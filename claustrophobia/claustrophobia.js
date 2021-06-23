@@ -364,7 +364,7 @@ function gameloop(timestamp) {
     grid()
     sheepdog1.draw(ctx)
     sheepdog1.update()
-    if(!end && !dead){
+    if(!end && !kill){
         setTimeout(function(){
             requestAnimationFrame(gameloop)
         },0)
