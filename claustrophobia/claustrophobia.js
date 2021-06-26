@@ -331,10 +331,6 @@ class Handler{
                     minesweeper.movedown()
                     minesweeper.trump()
                     break
-                case 32:
-
-                    end=true
-                    break
             }
         });
     }
