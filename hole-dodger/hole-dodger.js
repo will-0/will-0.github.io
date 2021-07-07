@@ -6,7 +6,7 @@ class dodger{
         this.gamewidth=gamewidth
         this.length=50
         this.width=30
-        this.position={x:0,y:0}
+        this.position={x:0,y:this.gameheight/2}
         this.offsetorigin=0
         this.offset=-20
         this.relpoints=[
@@ -94,29 +94,29 @@ class dodger{
             this.speed = angularmov(this.rotation,this.maxSpeed)
             this.position.x += this.speed.x
             this.position.y += this.speed.y;
-            if(this.position.x<this.length/2){
-                this.position.x=this.length/2
+            if(this.position.x<this.length){
+                this.position.x=this.length
                 this.rotation+=180
                 for(i=0;i<this.points.length;i++){
                     this.relpoints[i]=rotate_point(this.relpoints[i],180)
                 }
             }
-            if(this.position.y<this.width/2){
-                this.position.y=this.width/2
+            if(this.position.y<this.width){
+                this.position.y=this.width
                 this.rotation+=180
                 for(i=0;i<this.points.length;i++){
                     this.relpoints[i]=rotate_point(this.relpoints[i],180)
                 }
             }
-            if(this.position.x>this.gamewidth-this.length/2){
-                this.position.x=this.gamewidth-this.length/2
+            if(this.position.x>this.gamewidth-this.length){
+                this.position.x=this.gamewidth-this.length
                 this.rotation+=180
                 for(i=0;i<this.points.length;i++){
                     this.relpoints[i]=rotate_point(this.relpoints[i],180)
                 }
             }
-            if(this.position.y>this.gameheight-this.width/2){
-                this.position.y=this.gameheight-this.width/2
+            if(this.position.y>this.gameheight-this.width){
+                this.position.y=this.gameheight-this.width
                 this.rotation+=180
                 for(i=0;i<this.points.length;i++){
                     this.relpoints[i]=rotate_point(this.relpoints[i],180)
