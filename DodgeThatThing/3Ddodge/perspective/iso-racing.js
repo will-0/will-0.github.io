@@ -238,15 +238,15 @@ class dodger{
 }
 let kill=false
 let dead=false
-let perspective=200
-let scalefactor=2
+let intensity=5
+let perspective=intensity*160
 let rotationfactor=10
 let tiltfactor=10
 let spinfactor=90
 function iso_map(pos){
     let isopos
     let relpos=pndiff3D(pos,epicenter3D)
-    isopos=add_perspective(rotate3D(relpos,tiltfactor,rotationfactor,spinfactor),perspective)
+    isopos=add_perspective(rotate3D(relpos,tiltfactor,rotationfactor,spinfactor),perspective,intensity)
     let final={
         x:isopos.x+epicenter.x,
         y:isopos.y+epicenter.y
@@ -283,8 +283,8 @@ function rotate_point(point,ang){
     }
     return npoint
 }
-function add_perspective(point,perspective){
-    let z = GAME_SIZE-point.z
+function add_perspective(point,perspective,intensity){
+    let z = intensity*G-point.z
     let npoint={
         x:(point.x*perspective)/z,
         y:(point.y*perspective)/z,
@@ -333,13 +333,16 @@ function JTD(p1,p2){
     dist=Math.sqrt(Math.pow(diff(p1,p2).x,2)+Math.pow(diff(p1,p2).y,2))
     drawline(p1,angle,dist)
 }
-function scale(pos,scale){
-    npos={
-        x:pos.x*scale,
-        y:pos.y*scale,
-        z:pos.z*scale
+function scale_point(point,scale){
+    let Matrix=[
+        [scale,0],
+        [0,scale],
+    ]
+    let npoint={
+        x:point.x*Matrix[0][0]+point.y*Matrix[0][1],
+        y:point.x*Matrix[1][0]+point.y*Matrix[1][1]
     }
-    return npos
+    return npoint
 }
 function angularmov(ang,speed){
     rang=ang*(Math.PI/180)
